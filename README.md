@@ -1,6 +1,6 @@
 ## Equipo y roles
-- Oseas Ortiz — Líder de proyecto
-- Nombre — Desarrollo (clase Persona, C++)
-- Nombre — Desarrollo (clase Objeto, C++)
-- Nombre — Desarrollo (clase Objeto, C++)
-- Nombre — Desarrollo (clase Objeto, C++)
+- Everly Oseas Ortiz Yaucan — Líder de proyecto
+- Justin Alexander Guanoquiza Aguaguiña — Desarrollo 
+- Jose Ernesto Sierra Mera -- Desarrollo
+- Walter Fernando Villacrés López — Desarrollo 
+- Edwin David Guamanquispe Guaman — Desarrollo 
