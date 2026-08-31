@@ -121,5 +121,30 @@ public class RegistroEstudiantes {
             estudiantes[i].mostrarDatos();
         }
     }
+   // Calcular promedio general del curso
+    public double calcularPromedioCurso() {
+
+        double suma = 0;
+        int cantidadNotas = 0;
+
+        for (int i = 0; i < cantidad; i++) {
+
+            double[] notas = estudiantes[i].getNotas();
+
+            for (int j = 0; j < notas.length; j++) {
+
+                if (notas[j] != 0) {
+                    suma += notas[j];
+                    cantidadNotas++;
+                }
+            }
+        }
+
+        if (cantidadNotas == 0) {
+            return 0;
+        }
+
+        return suma / cantidadNotas;
+    }
 
 }
