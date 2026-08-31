@@ -616,5 +616,44 @@ public static void main(String[] args){
             );
         }
     }
+    // ==========================================
+    // OPCION 4 - PROMEDIO DEL CURSO
+    // ==========================================
+
+    public static void promedioCurso() {
+
+        double promedio = registro.calcularPromedioCurso();
+
+        if (promedio == 0 && !existenNotas()) {
+
+            System.out.println(
+                    "No se han registrado calificaciones de estudiantes."
+            );
+
+        } else {
+
+            System.out.printf(
+                    "Promedio general del curso: %.2f%n",
+                    promedio
+            );
+        }
+    }
+
+    // Verificar si existen notas
+    public static boolean existenNotas() {
+
+        for (int i = 1; i <= registro.getCantidad(); i++) {
+
+            Estudiante estudiante =
+                    registro.buscarPorAutonumerico(i);
+
+            if (estudiante.cantidadNotas() > 0) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 
 }
