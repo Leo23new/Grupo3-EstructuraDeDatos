@@ -339,5 +339,59 @@ public static void main(String[] args){
                     }
                 });
     }
+    // ==========================================
+    // OPCION 2 - CALIFICACIONES
+    // ==========================================
+
+    public static void registrarCalificaciones() {
+
+        if (registro.getCantidad() == 0) {
+
+            System.out.println("No hay estudiantes registrados.");
+            return;
+        }
+
+        System.out.println("========== REGISTRO DE CALIFICACIONES ==========");
+
+        while (true) {
+
+            String cedula = leerTexto(
+                    "Ingrese la cedula del estudiante (0 para regresar): "
+            );
+
+            if (cedula.equals("0")) {
+                return;
+            }
+
+            Estudiante estudiante = registro.buscarPorCedula(cedula);
+
+            if (estudiante == null) {
+
+                System.out.println(
+                        "No se encontro un estudiante con esa cedula."
+                );
+
+                String respuesta = leerTexto(
+                        "¿Desea ingresar otra cedula? (s/n): "
+                );
+
+                if (!respuesta.equalsIgnoreCase("s")) {
+                    return;
+                }
+
+                continue;
+            }
+
+            System.out.println("========== ESTUDIANTE ==========");
+            System.out.println("Nombres: " + estudiante.getNombres());
+            System.out.println("Apellidos: " + estudiante.getApellidos());
+            System.out.println("Edad: " + estudiante.getEdad());
+
+            menuCalificaciones(estudiante);
+
+            return;
+        }
+    }
+
 
 }
