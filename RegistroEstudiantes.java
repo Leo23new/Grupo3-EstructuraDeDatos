@@ -8,5 +8,11 @@ public class RegistroEstudiantes {
         this.estudiantes = new Estudiante[MAX_ESTUDIANTES];
         this.cantidad = 0;
     }
+    public int getCantidad() {
+        return cantidad;
+    }
+    public boolean estaLleno() {
+        return cantidad == MAX_ESTUDIANTES;
+    }
 
 }
