@@ -181,5 +181,39 @@ public static void main(String[] args){
                     }
                 });
     }
+    public static double leerDouble(String mensaje) {
 
+        while (true) {
+
+            try {
+
+                System.out.print(mensaje);
+                return Double.parseDouble(teclado.nextLine());
+
+            } catch (NumberFormatException e) {
+
+                System.out.println(
+                        "Ingrese un número válido."
+                );
+            }
+        }
+    }
+
+    public static LocalDate leerFecha(String mensaje) {
+
+        while (true) {
+
+            try {
+
+                System.out.print(mensaje);
+                return LocalDate.parse(teclado.nextLine());
+
+            } catch (Exception e) {
+
+                System.out.println(
+                        "Formato incorrecto. Use AAAA-MM-DD."
+                );
+            }
+        }
+    }
 }
