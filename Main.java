@@ -655,5 +655,18 @@ public static void main(String[] args){
         return false;
     }
 
+    // ==========================================
+    // REPETIR ACCION
+    // ==========================================
 
+    public static void repetirAccion(
+            String mensaje,
+            Runnable accion) {
+
+        String respuesta = leerTexto(mensaje);
+
+        if (respuesta.equalsIgnoreCase("s")) {
+            accion.run();
+        }
+    }
 }
