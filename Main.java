@@ -58,5 +58,48 @@ public static void main(String[] args){
         System.out.println("0.- Salir");
     }
 
+    // ==========================================
+    // OPCIÓN 1 - ESTUDIANTES
+    // ==========================================
+
+    public static void menuEstudiantes() {
+
+        int opcion;
+
+        do {
+
+            registro.listar();
+
+            System.out.println("========== SUBMENU ESTUDIANTES ==========");
+            System.out.println("1.- Ingresar estudiante");
+            System.out.println("2.- Modificar estudiante");
+            System.out.println("3.- Eliminar estudiante");
+            System.out.println("0.- Regresar al menu principal");
+
+            opcion = leerEntero("Seleccione una opcion: ");
+
+            switch (opcion) {
+
+                case 1:
+                    ingresarEstudiante();
+                    break;
+
+                case 2:
+                    modificarEstudiante();
+                    break;
+
+                case 3:
+                    eliminarEstudiante();
+                    break;
+
+                case 0:
+                    break;
+
+                default:
+                    System.out.println("Opcion no valida.");
+            }
+
+        } while (opcion != 0);
+    }
 
 }
