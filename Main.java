@@ -572,5 +572,49 @@ public static void main(String[] args){
             System.out.println("No se pudo eliminar la nota.");
         }
     }
+    // ==========================================
+    // OPCION 3 - PROMEDIO ESTUDIANTE
+    // ==========================================
+
+    public static void promedioEstudiante() {
+
+        if (registro.getCantidad() == 0) {
+
+            System.out.println("No hay estudiantes registrados.");
+            return;
+        }
+
+        String cedula = leerTexto(
+                "Ingrese la cEdula del estudiante: "
+        );
+
+        Estudiante estudiante = registro.buscarPorCedula(cedula);
+
+        if (estudiante == null) {
+
+            System.out.println(
+                    "No se encontrO un estudiante con la cedula indicada."
+            );
+
+            return;
+        }
+
+        System.out.println("========== INFORMACION ==========");
+        System.out.println("Nombres: " + estudiante.getNombres());
+        System.out.println("Apellidos: " + estudiante.getApellidos());
+        System.out.println("Edad: " + estudiante.getEdad());
+
+        if (estudiante.cantidadNotas() == 0) {
+
+            System.out.println("Promedio: No tiene calificaciones.");
+
+        } else {
+
+            System.out.printf(
+                    "Promedio: %.2f%n",
+                    estudiante.calcularPromedio()
+            );
+        }
+    }
 
 }
