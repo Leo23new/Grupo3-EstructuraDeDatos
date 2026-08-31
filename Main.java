@@ -216,4 +216,128 @@ public static void main(String[] args){
             }
         }
     }
+
+  // ==========================================
+    // MODIFICAR ESTUDIANTE
+    // ==========================================
+
+    public static void modificarEstudiante() {
+
+        if (registro.getCantidad() == 0) {
+
+            System.out.println("No hay estudiantes registrados.");
+            return;
+        }
+
+        int numero = leerEntero(
+                "Ingrese el autonumérico del estudiante: "
+        );
+
+        Estudiante estudiante = registro.buscarPorAutonumerico(numero);
+
+        if (estudiante == null) {
+
+            System.out.println("No existe ese autonumérico.");
+            return;
+        }
+
+        System.out.println("========== DATOS ACTUALES ==========");
+        estudiante.mostrarDatos();
+
+        System.out.println("========== NUEVOS DATOS ==========");
+
+        String cedula = leerTexto("Nueva cedula: ");
+
+        String nombres = leerTexto("Nuevos nombres: ");
+
+        String apellidos = leerTexto("Nuevos apellidos: ");
+
+        LocalDate fechaNacimiento = leerFecha(
+                "Nueva fecha de nacimiento (AAAA-MM-DD): "
+        );
+
+        Estudiante nuevo = new Estudiante(
+                cedula,
+                nombres,
+                apellidos,
+                fechaNacimiento
+        );
+
+        if (registro.modificar(numero, nuevo)) {
+
+            System.out.println("Estudiante modificado correctamente.");
+
+        } else {
+
+            System.out.println(
+                    "No se pudo modificar. "
+                    + "La cédula puede estar repetida."
+            );
+        }
+
+        repetirAccion("¿Desea modificar otro estudiante? (s/n): ",
+                new Runnable() {
+                    public void run() {
+                        modificarEstudiante();
+                    }
+                });
+    }
+
+    // ==========================================
+    // ELIMINAR ESTUDIANTE
+    // ==========================================
+
+    public static void eliminarEstudiante() {
+
+        if (registro.getCantidad() == 0) {
+
+            System.out.println("No hay estudiantes registrados.");
+            System.out.println("No se puede eliminar ningún estudiante.");
+            return;
+        }
+
+        registro.listar();
+
+        int numero = leerEntero(
+                "\nIngrese el autonumérico que desea eliminar: "
+        );
+
+        Estudiante estudiante = registro.buscarPorAutonumerico(numero);
+
+        if (estudiante == null) {
+
+            System.out.println("\nNo existe ese autonumérico.");
+            return;
+        }
+
+        System.out.println("Estudiante seleccionado:");
+
+        estudiante.mostrarDatos();
+
+        String respuesta = leerTexto(
+                "¿Está seguro de eliminarlo? (s/n): "
+        );
+
+        if (respuesta.equalsIgnoreCase("s")) {
+
+            if (registro.eliminar(numero)) {
+
+                System.out.println(
+                        "Estudiante eliminado correctamente."
+                );
+            }
+
+        } else {
+
+            System.out.println("Operación cancelada.");
+        }
+
+        repetirAccion("¿Desea eliminar otro estudiante? (s/n): ",
+                new Runnable() {
+                    public void run() {
+                        eliminarEstudiante();
+                    }
+                });
+    }
+
 }
