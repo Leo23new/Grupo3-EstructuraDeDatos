@@ -128,4 +128,58 @@ public static void main(String[] args){
             }
         }
     }
+    // ==========================================
+    // INGRESAR ESTUDIANTE
+    // ==========================================
+
+    public static void ingresarEstudiante() {
+
+        if (registro.estaLleno()) {
+
+            System.out.println("Ya se registraron los 20 estudiantes.");
+            System.out.println("No se pueden ingresar más estudiantes.");
+            return;
+        }
+
+        System.out.println("========== INGRESAR ESTUDIANTE ==========");
+
+        String cedula = leerTexto("Cedula: ");
+
+        if (registro.buscarPorCedula(cedula) != null) {
+
+            System.out.println("Ya existe un estudiante con esa cedula.");
+            return;
+        }
+
+        String nombres = leerTexto("Nombres: ");
+        String apellidos = leerTexto("Apellidos: ");
+
+        LocalDate fechaNacimiento = leerFecha(
+                "Fecha de nacimiento (AAAA-MM-DD): "
+        );
+
+        Estudiante estudiante = new Estudiante(
+                cedula,
+                nombres,
+                apellidos,
+                fechaNacimiento
+        );
+
+        if (registro.registrar(estudiante)) {
+
+            System.out.println("Estudiante registrado correctamente.");
+
+        } else {
+
+            System.out.println("No se pudo registrar el estudiante.");
+        }
+
+        repetirAccion("¿Desea ingresar otro estudiante? (s/n): ",
+                new Runnable() {
+                    public void run() {
+                        ingresarEstudiante();
+                    }
+                });
+    }
+
 }
