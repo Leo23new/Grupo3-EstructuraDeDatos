@@ -437,5 +437,140 @@ public static void main(String[] args){
         } while (opcion != 0);
     }
 
+    // ==========================================
+    // MOSTRAR NOTAS
+    // ==========================================
+
+    public static void mostrarNotas(Estudiante estudiante) {
+
+        System.out.println("========== NOTAS REGISTRADAS ==========");
+
+        boolean hayNotas = false;
+
+        for (int i = 0; i < estudiante.getNotas().length; i++) {
+
+            if (estudiante.getNotas()[i] != 0) {
+
+                System.out.println(
+                        (i + 1) + ". " + estudiante.getNotas()[i]
+                );
+
+                hayNotas = true;
+            }
+        }
+
+        if (!hayNotas) {
+            System.out.println("No hay calificaciones registradas.");
+        }
+    }
+
+    // ==========================================
+    // INSERTAR NOTA
+    // ==========================================
+
+    public static void insertarNota(Estudiante estudiante) {
+
+        if (estudiante.cantidadNotas() == 7) {
+
+            System.out.println(
+                    "Se han ingresado todas las calificaciones posibles."
+            );
+
+            return;
+        }
+
+        double nota;
+
+        do {
+
+            nota = leerDouble("Ingrese la nota (0-10): ");
+
+            if (nota < 0 || nota > 10) {
+
+                System.out.println(
+                        "La nota debe estar entre 0 y 10."
+                );
+            }
+
+        } while (nota < 0 || nota > 10);
+
+        if (estudiante.agregarNota(nota)) {
+
+            System.out.println("Nota registrada correctamente.");
+        }
+    }
+
+    // ==========================================
+    // MODIFICAR NOTA
+    // ==========================================
+
+    public static void modificarNota(Estudiante estudiante) {
+
+        if (estudiante.cantidadNotas() == 0) {
+
+            System.out.println("No existen notas para modificar.");
+            return;
+        }
+
+        mostrarNotas(estudiante);
+
+        int posicion = leerEntero(
+                "Ingrese el número de la nota que desea modificar: "
+        );
+
+        double nuevaNota;
+
+        do {
+
+            nuevaNota = leerDouble(
+                    "Ingrese la nueva nota (0-10): "
+            );
+
+            if (nuevaNota < 0 || nuevaNota > 10) {
+
+                System.out.println(
+                        "La nota debe estar entre 0 y 10."
+                );
+            }
+
+        } while (nuevaNota < 0 || nuevaNota > 10);
+
+        if (estudiante.modificarNota(posicion - 1, nuevaNota)) {
+
+            System.out.println("Nota modificada correctamente.");
+
+        } else {
+
+            System.out.println("No se pudo modificar la nota.");
+        }
+    }
+
+    // ==========================================
+    // ELIMINAR NOTA
+    // ==========================================
+
+    public static void eliminarNota(Estudiante estudiante) {
+
+        if (estudiante.cantidadNotas() == 0) {
+
+            System.out.println("No existen notas para eliminar.");
+            return;
+        }
+
+        mostrarNotas(estudiante);
+
+        int posicion = leerEntero(
+                "Ingrese el numero de la nota que desea eliminar: "
+        );
+
+        if (estudiante.eliminarNota(posicion - 1)) {
+
+            System.out.println("Nota eliminada correctamente.");
+
+        } else {
+
+            System.out.println("No se pudo eliminar la nota.");
+        }
+    }
 
 }
