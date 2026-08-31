@@ -393,5 +393,49 @@ public static void main(String[] args){
         }
     }
 
+   // ==========================================
+    // MENU DE CALIFICACIONES
+    // ==========================================
+
+    public static void menuCalificaciones(Estudiante estudiante) {
+
+        int opcion;
+
+        do {
+
+            mostrarNotas(estudiante);
+
+            System.out.println("========== CALIFICACIONES ==========");
+            System.out.println("1.- Insertar nota");
+            System.out.println("2.- Modificar nota");
+            System.out.println("3.- Eliminar nota");
+            System.out.println("0.- Regresar");
+
+            opcion = leerEntero("Seleccione una opcion: ");
+
+            switch (opcion) {
+
+                case 1:
+                    insertarNota(estudiante);
+                    break;
+
+                case 2:
+                    modificarNota(estudiante);
+                    break;
+
+                case 3:
+                    eliminarNota(estudiante);
+                    break;
+
+                case 0:
+                    break;
+
+                default:
+                    System.out.println("Opcion no valida.");
+            }
+
+        } while (opcion != 0);
+    }
+
 
 }
