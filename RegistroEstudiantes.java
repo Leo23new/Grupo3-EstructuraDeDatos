@@ -85,5 +85,41 @@ public class RegistroEstudiantes {
 
         return true;
     }
+    // Eliminar estudiante
+    public boolean eliminar(int numero) {
+
+        if (numero < 1 || numero > cantidad) {
+            return false;
+        }
+
+        // Desplazar estudiantes hacia la izquierda
+        for (int i = numero - 1; i < cantidad - 1; i++) {
+            estudiantes[i] = estudiantes[i + 1];
+        }
+
+        // Eliminar la ultima referencia
+        estudiantes[cantidad - 1] = null;
+
+        cantidad--;
+
+        return true;
+    }
+
+    // Listar estudiantes
+    public void listar() {
+
+        if (cantidad == 0) {
+            System.out.println("No hay estudiantes registrados.");
+            return;
+        }
+
+        System.out.println("========== ESTUDIANTES ==========");
+
+        for (int i = 0; i < cantidad; i++) {
+
+            System.out.println("Autonumerico: " + (i + 1));
+            estudiantes[i].mostrarDatos();
+        }
+    }
 
 }
