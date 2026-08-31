@@ -1,3 +1,4 @@
+package Automovilestudiantesjava;
 public class RegistroEstudiantes {
 
     private static final int MAX_ESTUDIANTES = 20;

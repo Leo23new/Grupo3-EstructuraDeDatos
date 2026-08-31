@@ -1,3 +1,4 @@
+package Automovilestudiantesjava;
 import java.util.Scanner;
 
 // ============================================================
