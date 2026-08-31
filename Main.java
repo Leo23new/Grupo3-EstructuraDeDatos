@@ -101,5 +101,31 @@ public static void main(String[] args){
 
         } while (opcion != 0);
     }
+    // ==========================================
+    // METODOS PARA LEER ENTEROS Y TEXTOS DESDE CONSOLA
+    // ==========================================
 
+    public static String leerTexto(String mensaje) {
+
+        System.out.print(mensaje);
+        return teclado.nextLine();
+    }
+
+    public static int leerEntero(String mensaje) {
+
+        while (true) {
+
+            try {
+
+                System.out.print(mensaje);
+                return Integer.parseInt(teclado.nextLine());
+
+            } catch (NumberFormatException e) {
+
+                System.out.println(
+                        "Ingrese un numero entero valido."
+                );
+            }
+        }
+    }
 }
