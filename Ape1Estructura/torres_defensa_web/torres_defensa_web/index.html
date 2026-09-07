@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Defensa de Torres — Cozy Invasion</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="encabezado">
+      <h1>🏰 Defensa de Torres <span class="subtitulo">— Cozy Invasion</span></h1>
+      <div class="stats">
+        <div class="stat stat-vida"><span class="icono">❤️</span><span id="valor-vida">20</span></div>
+        <div class="stat stat-oro"><span class="icono">💰</span><span id="valor-oro">150</span></div>
+        <div class="stat stat-puntos"><span class="icono">⭐</span><span id="valor-puntos">0</span></div>
+        <div class="stat stat-oleada"><span class="icono">🌊</span><span id="valor-oleada">0 / 0</span></div>
+      </div>
+    </header>
+
+    <main class="contenido">
+      <section class="panel panel-izquierdo">
+        <h2>Torres</h2>
+        <div id="lista-torres" class="lista-torres"></div>
+
+        <h2>Historial</h2>
+        <div class="acciones-historial">
+          <button id="btn-deshacer" class="boton" disabled>↶ Deshacer</button>
+          <button id="btn-rehacer" class="boton" disabled>↷ Rehacer</button>
+        </div>
+        <ul id="registro" class="registro"></ul>
+      </section>
+
+      <section class="panel-central">
+        <div class="barra-modo">
+          <button id="btn-modo-colocar" class="boton boton-modo activo">🛠️ Colocar</button>
+          <button id="btn-modo-mejorar" class="boton boton-modo">⬆️ Mejorar</button>
+          <span class="separador"></span>
+          <button id="btn-iniciar-oleada" class="boton boton-primario">▶ Iniciar oleada</button>
+          <button id="btn-pausa" class="boton">⏸ Pausar</button>
+          <button id="btn-velocidad" class="boton">1x</button>
+          <button id="btn-reiniciar" class="boton">🔄 Reiniciar</button>
+        </div>
+
+        <div id="tablero" class="tablero">
+          <div id="capa-celdas" class="capa capa-celdas"></div>
+          <div id="capa-entidades" class="capa capa-entidades"></div>
+        </div>
+
+        <p id="mensaje" class="mensaje"></p>
+      </section>
+    </main>
+
+    <div id="overlay-final" class="overlay oculto">
+      <div class="tarjeta-final">
+        <h2 id="titulo-final">Fin del juego</h2>
+        <p id="detalle-final"></p>
+        <button id="btn-jugar-de-nuevo" class="boton boton-primario">Jugar de nuevo</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
