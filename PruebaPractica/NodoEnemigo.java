@@ -1,0 +1,18 @@
+
+public class NodoEnemigo {
+    private Enemigo enemigo;
+    private NodoEnemigo anterior;
+    private NodoEnemigo siguiente;
+
+    public NodoEnemigo(Enemigo enemigo) {
+        this.enemigo = enemigo;
+        this.anterior = null;
+        this.siguiente = null;
+    }
+
+    public Enemigo getEnemigo() { return enemigo; }
+    public NodoEnemigo getAnterior() { return anterior; }
+    public void setAnterior(NodoEnemigo anterior) { this.anterior = anterior; }
+    public NodoEnemigo getSiguiente() { return siguiente; }
+    public void setSiguiente(NodoEnemigo siguiente) { this.siguiente = siguiente; }
+}
